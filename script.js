@@ -24,6 +24,32 @@ function checkEmailValidity(input) {
     if (regex.test(input.value)) {
         showInputSuccess(input);
     }else{
-        showInputError(input, 'EMail is not valid')
+        showInputError(input, 'EMail is not valid');
+    }
+}
+
+function checkRequiredField(inputArr) {
+    inputArr.forEach(function(input) {
+        if (input.value.trim() === '') {
+            showInputError(input, `${getFieldName(input)}` + ' is required');
+        }else{
+            showInputSuccess(input);
+        }
+    })
+}
+
+function checkInputLength(input, min, max) {
+    if(input.value.length < min) {
+        showInputError(
+            input,
+            `${getFielName(input)} must be at least ${min} characters`
+        );
+    }else if(input.value.length > max) {
+        showInputError(
+            input,
+            `${getFielName(input)} must be less than ${max} characters`
+        );
+    }else{
+        showInputSuccess(input);
     }
 }
