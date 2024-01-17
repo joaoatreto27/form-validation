@@ -53,3 +53,10 @@ function checkInputLength(input, min, max) {
         showInputSuccess(input);
     }
 }
+
+function checkUsername(input) {
+    const user = /^[0-9a-zA-Z]+$/;
+    if (!user.test(input.value)) {
+        showInputError(input, 'Username can only contain letters or numbers');
+    }
+}
